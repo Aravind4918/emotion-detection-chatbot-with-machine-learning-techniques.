@@ -1,0 +1,29 @@
+{% extends 'base_u.html' %}
+{% load static %}
+
+{% block content %}
+<center>
+<font size="+1" color="#cc0033"><em><h4>The Predicted Solar Energy is</h4></em> <h4>{{data}}</h4> 
+</font><br><br><br>
+
+<h5>Average Solar Energy: {{ag}}
+</h5>
+<br>
+<h5>
+ {{rs}}
+</h5>
+
+<table>
+<tr>
+	<td><img src="{% static 'assets/images/g2.jpg' %}"></td>
+	<td><img src="{% static 'assets/images/g3.jpg' %}"></td>
+</tr>
+</table>
+
+<a href="/prediction">Back</a>
+
+
+
+<br>
+
+{% endblock %}

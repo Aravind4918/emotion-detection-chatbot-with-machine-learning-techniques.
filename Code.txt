@@ -1,0 +1,210 @@
+dataset.py
+--------------
+
+import pandas as pd
+
+cnt=pd.cnt_csv('Emotions.csv',encoding='cp1252')
+d=cnt.info()
+print(d)
+
+print('Emotions:',pd.unique(cnt['Emotion']))
+
+
+NBTraining.py
+---------------------
+import pandas as pd
+from sklearn.pipeline import Pipeline
+import numpy as np
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
+
+
+class NBTraining:
+
+    def traindef():
+        t_f = 'Emotions.csv'
+        t_d = pd.read_csv(t_f, encoding='cp1252')
+        tf_idf = TfidfVectorizer(stop_words='english', use_idf=True, smooth_idf=True)  # Text transformation
+    
+        pipeline = Pipeline([('TF_IDF', tf_idf), ('model', BernoulliNB())])
+
+        model_name = 'bnb_model.sav'
+        pickle.dump(pipeline.fit(t_d['Statement'], t_d['Emotion']), open(model_name, 'wb'))
+ 
+
+if __name__ == "__main__":
+    pass
+
+
+KNNTraining.py
+---------------------
+import pandas as pd
+from sklearn.pipeline import Pipeline
+import numpy as np
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
+
+
+class KNNTraining:
+
+    def traindef():
+        t_f = 'Emotions.csv'
+        t_d = pd.read_csv(t_f, encoding='cp1252')
+        tf_idf = TfidfVectorizer(stop_words='english', use_idf=True, smooth_idf=True)  # Text transformation
+    
+        pipeline = Pipeline([('TF_IDF', tf_idf), ('model', KNeighborsClassifier())])
+
+        model_name = 'knc_model.sav'
+        pickle.dump(pipeline.fit(t_d['Statement'], t_d['Emotion']), open(model_name, 'wb'))
+ 
+
+if __name__ == "__main__":
+    pass
+
+
+
+NNTraining.py
+---------------------
+import pandas as pd
+from sklearn.pipeline import Pipeline
+import numpy as np
+
+from sklearn.neural_network import MLPClassifier
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
+
+
+class NNTraining:
+
+    def traindef():
+        t_f = 'Emotions.csv'
+        t_d = pd.read_csv(t_f, encoding='cp1252')
+        tf_idf = TfidfVectorizer(stop_words='english', use_idf=True, smooth_idf=True)  # Text transformation
+    
+        pipeline = Pipeline([('TF_IDF', tf_idf), ('model', MLPClassifier())])
+
+        model_name = 'mll_m.sav'
+        pickle.dump(pipeline.fit(t_d['Statement'], t_d['Emotion']), open(model_name, 'wb'))
+ 
+
+if __name__ == "__main__":
+    pass
+
+
+
+
+RFTraining.py
+---------------------
+import pandas as pd
+from sklearn.pipeline import Pipeline
+import numpy as np
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
+
+
+class NNTraining:
+
+    def traindef():
+        t_f = 'Emotions.csv'
+        t_d = pd.read_csv(t_f, encoding='cp1252')
+        tf_idf = TfidfVectorizer(stop_words='english', use_idf=True, smooth_idf=True)  # Text transformation
+    
+        pipeline = Pipeline([('TF_IDF', tf_idf), ('model', RandomForestClassifier())])
+
+        model_name = 'rf_model.sav'
+        pickle.dump(pipeline.fit(t_d['Statement'], t_d['Emotion']), open(model_name, 'wb'))
+ 
+
+if __name__ == "__main__":
+    pass
+
+
+
+SVMTraining.py
+---------------------
+import pandas as pd
+from sklearn.pipeline import Pipeline
+import numpy as np
+
+from sklearn import svm
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
+
+
+class SVMTraining:
+
+    def traindef():
+        t_f = 'Emotions.csv'
+        t_d = pd.read_csv(t_f, encoding='cp1252')
+        tf_idf = TfidfVectorizer(stop_words='english', use_idf=True, smooth_idf=True)  # Text transformation
+    
+        pipeline = Pipeline([('TF_IDF', tf_idf), ('model', svm.SVC())])
+
+        model_name = 'svm_model.sav'
+        pickle.dump(pipeline.fit(t_d['Statement'], t_d['Emotion']), open(model_name, 'wb'))
+ 
+
+if __name__ == "__main__":
+    pass
+
+
+
+Testing.py
+--------------------------
+import time
+import pickle
+import pandas as pd
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+def TestingAcc(model, file):
+	
+	t_d = pd.read_csv(file,   encoding='cp1252')
+	Y=t_d['Emotion']
+	l_m = pickle.load(open(model, 'rb'))
+	predicted_class = l_m.predict(t_d['Statement'])
+	accuracy = accuracy_score(Y, predicted_class)
+
+	return accuracy
+
+
+if __name__ == '__main__':
+	TestingAcc('bnb_model.sav','Testing_data.csv')
+
+
+
+
+Graphs.py
+------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt1
+import sys
+
+def graphgen(g1):
+    
+
+
+    hb=[]
+    d_t = ()
+    d_t= tuple(g1.keys())
+
+    print(type(g1.values()))
+    hb= list(g1.values())
+    print(d_t, hb)
+    
+    y_pos = np.arange(len(d_t))
+
+    plt.xlabel('Models')
+    plt.ylabel('Accuracy')
+    plt.title('')
+    plt.savefig('D:\\Django\\Emotion\\webapp\\static\\assets\\images\\g1.jpg')
+
+if __name__ == "__main__":
+	pass
+
+

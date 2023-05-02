@@ -1,0 +1,44 @@
+
+{% extends 'base_a.html' %}
+{% block content %}
+<font size="+1" color="red">{{msg}}
+</font>
+<center>
+<h2>Training Page</h2><br>
+
+
+					<table id="tab" width="60%"> <tr><td><form action="/knntrain/" method="post">
+					{% csrf_token %}<input type="submit" class="form-control" value="KNN Training Process Initiate">	</form>
+					</table>
+
+
+
+
+					<table id="tab" width="60%"> <tr><td><form action="/nbtrain/" method="post">
+					{% csrf_token %}<input type="submit" class="form-control" value="Naive Bayes Training Process Initiate">	</form>
+					</table>
+
+
+
+
+
+					<table id="tab" width="60%"> <tr><td><form action="/rftrain/" method="post">
+					{% csrf_token %}<input type="submit" class="form-control" value="Random Forest Training Process Initiate">	</form>
+					</table>
+
+
+					<table id="tab" width="60%"> <tr><td><form action="/nntrain/" method="post">
+					{% csrf_token %}<input type="submit" class="form-control" value="Neural Networks Training Process Initiate">	</form>
+					</table>
+
+
+					<table id="tab" width="60%"> <tr><td><form action="/svmtrain/" method="post">
+					{% csrf_token %}<input type="submit" class="form-control" value="SVM Training Process Initiate">	</form>
+					</table>
+
+
+
+</center>
+
+
+{% endblock %}

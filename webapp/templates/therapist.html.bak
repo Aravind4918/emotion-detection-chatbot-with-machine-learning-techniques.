@@ -1,0 +1,34 @@
+{% extends 'base_u.html' %}
+
+{% block content %}
+
+
+<h6>
+	
+{{msg}}
+	
+	<h2>
+	Therapists Details
+	<br>
+</h2>
+</h3>
+
+
+	{% for d in data %}
+<table id="tab" width="50%">
+<tr><td><h4><i class="fa fa-user-md"></i>&nbsp;&nbsp;{{d.name}}</h3>
+<tr><td><h5><i class="fa fa-graduation-cap" aria-hidden="true">&nbsp;&nbsp;</i>{{d.qualification}}</h3></h3>
+<tr><td><h5><i class="fa fa-hospital-o"></i>&nbsp;&nbsp;{{d.address}}</h3>
+<tr><td><h5><i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{d.city}}</h3>
+
+</table>
+
+<br><br>
+				{% endfor %}
+
+
+<center>
+
+</center>
+	
+{% endblock %}

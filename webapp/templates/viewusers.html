@@ -1,0 +1,35 @@
+
+{% extends 'base_a.html' %}
+{% block content %}
+<center>
+	<font size="" color="#ff0000"><strong>{{msg}}</strong></font>
+	<br><br>
+<h2>View registered users </h2>
+<br><br>
+<table align="right" width="40%">
+<tr>
+	<td><h4>Search Users</h4>
+	<form method="post" action="/searchusers/">
+	
+{% csrf_token %}
+		
+	<input type="text" name="keys" required>
+	
+	</form>
+	</td>
+</tr>
+</table>
+
+<table width="90%" border >
+<tr><th>ID<th>Name<th>Email<th>Phone<th>Address
+{% for d1 in data %}
+
+<TR><TD>{{d1.id}}<TD>{{d1.name}}<TD>{{d1.email}}<TD>{{d1.ph}}<TD>{{d1.addr}}
+
+{% endfor %}
+
+</table>
+
+
+
+{% endblock %}

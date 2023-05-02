@@ -1,0 +1,17 @@
+{% extends 'base_u.html' %}
+{% block content %}<center><br><br>
+<h3><font size="+1" color="#6600ff">{{msg}}</h3>
+</font></center>
+<center>
+<h2>Emotion Detection</h2><br>
+
+<form method="post" action="/predictionact/">
+	{% csrf_token %} 
+<table  width="50%" cellspacing="10">
+                    <tr><td><input class="form-control"  type="text" name="st" placeholder="Enter Your Emotion" required="required" ></input></td></tr>
+					<tr><td><input type="submit" class="form-control" value="Predict">
+                
+</table>
+</form>
+
+{% endblock %}
